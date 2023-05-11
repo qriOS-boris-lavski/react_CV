@@ -1,43 +1,31 @@
 import './App.css';
+import image from './cv_img.jpg';
+import { Image, Contacts, Experience } from './components/Resume';
 
 
 function App() {
   return (
     <div className="App">
       <header>
-          <h1>VASYL BORYSLAVSKYI</h1>
-          <img src="{img}" alt="candidate's photo" width="250px"/>
-
-          <p> <strong>Web developer</strong> </p>
-          <hr/>
+          <div className="name-position">
+              <h2 className="name">Vasyl</h2>
+              <h2 className="surname">Boryslavskyi</h2>
+          </div>
+          <Image imgSrc={image}/>
+          <Contacts/>
       </header>
 
       <main>
-          <section>
-              <h3>Work experience</h3>
-
-              <dl>
-                  <dt><strong>2020 - present</strong> Individual entrepreneur</dt> 
-                  <dd><em>Sale goods on marketplaces <a href="https://rozetka.com.ua/" target="_blank">ROZETKA</a> and <a href="https://prom.ua/" target="_blank">Prom</a></em></dd>
-
-                  <dt><strong>2019 - 2020</strong> Supply manager at <a href="https://etool.com.ua/" target="_blank">ORCS Ltd.</a></dt> 
-                  <dd><em>Supply powertools for a domestic market</em></dd>
-
-                  <dt><strong>2017 - 2019</strong> Supply manager at <a href="https://deepnet.ua/" target="_blank">DeepNet Ukraine Ltd.</a></dt> 
-                  <dd><em>Supply equipment for a Internet providers</em></dd>
-
-                  <dt><strong>2016 - 2017</strong> Assistant of Supply manager at <a href="https://etalonk.com/" target="_blank">Etalon-K Ltd.</a></dt> 
-                  <dd><em>Preparing documents for import operations</em></dd>
-
-                  <dt><strong>2015 - 2016</strong> Sales manager at <a href="https://speak-up.com.ua/" target="_blank">SpeakUP</a></dt> 
-                  <dd><em>Sales English courses</em></dd>
-              </dl>
-          </section>
-
-          <section>
-             <article>
-                  <h3>Skills:</h3>
-
+          <section className="wrapper">
+              <div className="summary">
+                  <h3>Summary</h3>
+                  <p>I'm Individual entrepreneur now, and I was a Manager of foreign activity and Supply manager with 6 years of experience and all this time I've been helping 
+                      businesses to reach their goals. And now I'm junior Web Developer with different technical knowledges. I have experience with back-end (Node JS), front-end (JS, React) and I'm not going to stop and expand my knowledges.
+                      I'm highly motivated to become Web Developer.
+                  </p>
+              </div>
+              <div className="skills">
+                  <h3>Skills Highlights:</h3>
                   <ul>
                       <li>HTML</li>
                       <li>CSS</li>
@@ -45,18 +33,19 @@ function App() {
                       <li>React</li>
                       <li>Node JS</li>
                   </ul>
-             </article>
-
-             <article>
-                  <h3>Achievements:</h3>
-
-                  <ol>
-                      <li>Started my own business</li>
-                      <li>Born Ukrainian</li>
-                      <li>Bought Bayraktar for Ukraine forces</li>
-                  </ol>
-             </article>
-          </section>
+              </div>
+              <Experience/>
+              <div className="education">
+                  <h3>Education</h3>
+                  <div className="education-item">
+                      <p>
+                          <span>Dates of studying:</span> from 2010 – to 2015<br/>
+                          <span>Name of institution:</span> National university of food technologies<br/>
+                          <span>Degree and major:</span> MS, Manager of foreign activity
+                      </p>
+                  </div>
+              </div>
+              </section>
       </main>
     </div>
   );
