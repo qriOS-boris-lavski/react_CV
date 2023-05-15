@@ -75,6 +75,25 @@ span {
     font-weight: 600;
 }
 
+label {
+    display: block;
+}
+
+input, textarea {
+    font-size: 16px;
+    border-radius: 10px;
+    border-width: 2px;
+}
+
+button {
+    background-color: #86A3B4;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    
+}
+
 .name-position {
     margin-top: 60px;
     margin-left: 40px;
@@ -119,4 +138,8 @@ span {
     margin-bottom: 30px;
     font-size: 14px;
     line-height: 17px;
+}
+
+.form-input {
+    margin-bottom: 15px;
 }

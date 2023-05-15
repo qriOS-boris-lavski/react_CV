@@ -1,3 +1,6 @@
+import { useState } from "react"
+import { Job } from "./Job"
+
 export function Image ({imgSrc}){
     return (
         <div className="img-box">
@@ -32,60 +35,86 @@ export function Contacts() {
 }
 
 export function Experience() {
+
+    const [jobs, setJobs] = useState([
+        {
+            name: "Individual entrepreneur",
+            link: "https://prom.ua/",
+            title: "Owner",
+            description: "Buy goods on the foreign markets. Organise delivery to Ukraine from origin country of goods. Sale goods on marketplaces ROZETKA and Prom."
+        },
+        {
+            name: "ORCS Ltd.",
+            link: "https://etool.com.ua/",
+            title: "Supply manager",
+            description: "Preparation of transportation documentation and search for carriers. Conclusion of contracts with suppliers and carriers and support of concluded contracts. Cooperation with transport companies and brokers. Calculation of the cost of goods from each delivery."
+        },
+        {
+            name: "DeepNet Ukraine Ltd.",
+            link: "https://deepnet.ua/",
+            title: "Supply manager",
+            description: "Market analysis, search for suppliers. Conducting negotiations and concluding contracts with suppliers and monitoring concluded contracts. Formation of orders, control of shipments. Preparation of documents for customs clearance. Cooperation with transport companies and brokers."
+        },
+        {
+            name: "Etalon-K Ltd.",
+            link: "https://etalonk.com/",
+            title: "Assistant of Supply manager",
+            description: "Formation and verification of accompanying documentation. Preparation of a package of documents for customs clearance of goods. Creation of assortment of nomenclature."
+        },
+        {
+            name: "SpeakUP",
+            link: "https://speak-up.com.ua/",
+            title: "Sales manager",
+            description: "Customer consultation. Sale of English language courses."
+        }
+    ])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const { name, link, title, description } = e.target.elements;
+        const newJob = {
+            name: name.value,
+            link: link.value,
+            title: title.value,
+            description: description.value,
+        };
+        setJobs([...jobs, newJob]);
+        name.value = "";
+        link.value = "";
+        title.value = "";
+        description.value = "";
+      };
+
     return(
         <div className="work-experience">
-        <h3>Work experience</h3>
-        <div className="job">
-            <p>
-                <span>Name of employer:</span> Individual entrepreneur<br/>
-                <span>Dates of employment:</span> 2020 - present<br/>
-                <span>Job title:</span> Owner<br/>
-                <span>Project/Role description:</span> Buy goods on the foreign markets. Organise delivery to Ukraine from origin country of goods.
-                Sale goods on marketplaces <a target="_blank" rel="noreferrer" href="https://rozetka.com.ua/" >ROZETKA</a> and <a href="https://prom.ua/" rel="noreferrer" target="_blank">Prom.</a>
-            </p>
+            <h3>Work experience</h3>
+            {jobs.map((job, index) => (
+                <Job key={index} {...job} />
+             ))}
+
+             <h4>Add a new job:</h4>
+             <form onSubmit={handleSubmit}>
+                <div className="form-input">
+                  <label htmlFor="name">Name of employer:</label>
+                  <input type="text" id="name" name="name" required />
+                </div>
+                <div className="form-input">
+                  <label htmlFor="link">Link on employer's website:</label>
+                  <input type="url" id="link" name="link" required />
+                </div>
+                <div className="form-input">
+                  <label htmlFor="title">Job title:</label>
+                  <input type="text" id="title" name="title" required />
+                </div>
+                <div className="form-input">
+                  <label htmlFor="description">Project/Role description:</label>
+                  <textarea id="description" name="description" required />
+                </div>
+                
+                
+                <button type="submit">Add the job</button>
+              </form>
         </div>
-        <div className="job">
-            <p>
-                <span>Name of employer:</span> <a href="https://etool.com.ua/" rel="noreferrer" target="_blank">ORCS Ltd.</a><br/>
-                <span>Dates of employment:</span> 2019 - 2021<br/>
-                <span>Job title:</span> Supply manager<br/>
-                <span>Project/Role description:</span> Preparation of transportation documentation and search for carriers. Conclusion of contracts with suppliers and carriers and support of concluded contracts.
-                Cooperation with transport companies and brokers.
-                Calculation of the cost of goods from each delivery.
-            </p>
-        </div>
-        <div className="job">
-            <p>
-                <span>Name of employer:</span> <a href="https://deepnet.ua/" rel="noreferrer" target="_blank">DeepNet Ukraine Ltd.</a><br/>
-                <span>Dates of employment:</span> 2017 - 2019<br/>
-                <span>Job title:</span> Supply manager<br/>
-                <span>Project/Role description:</span> Market analysis, search for suppliers.
-                Conducting negotiations and concluding contracts with suppliers and monitoring concluded contracts.
-                Formation of orders, control of shipments.
-                Preparation of documents for customs clearance.
-                Cooperation with transport companies and brokers.
-            </p>
-        </div>
-        <div className="job">
-            <p>
-                <span>Name of employer:</span> <a href="https://etalonk.com/" rel="noreferrer" target="_blank">Etalon-K Ltd.</a><br/>
-                <span>Dates of employment:</span> 2016 - 2017<br/>
-                <span>Job title:</span> Assistant of Supply manager<br/>
-                <span>Project/Role description:</span> Formation and verification of accompanying documentation.
-                Preparation of a package of documents for customs clearance of goods.
-                Creation of assortment of nomenclature.
-            </p>
-        </div>
-        <div className="job">
-            <p>
-                <span>Name of employer:</span> <a href="https://speak-up.com.ua/" rel="noreferrer" target="_blank">SpeakUP</a><br/>
-                <span>Dates of employment:</span> 2015 - 2016<br/>
-                <span>Job title:</span> Sales manager<br/>
-                <span>Project/Role description:</span> Customer consultation.
-                Sale of English language courses.
-            </p>
-        </div>
-    </div>
     )
 
 }
