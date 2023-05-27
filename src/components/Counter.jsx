@@ -2,9 +2,10 @@ import { useState } from "react"
 
 export function Counter() {
     const [num, setCount] = useState(0);
-
     function decrementNum(){
-        setCount((numCount) => numCount - 1)
+        setCount((numCount) => {
+            return numCount - 1
+        })
         
     }
 

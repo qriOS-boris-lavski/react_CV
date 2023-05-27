@@ -143,3 +143,13 @@ button {
 .form-input {
     margin-bottom: 15px;
 }
+
+.description {
+    font-style: italic;
+    font-weight: 400;
+}
+
+.repo-link {
+    font-size: 18px;
+    cursor: pointer;
+}

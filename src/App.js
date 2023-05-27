@@ -2,9 +2,11 @@ import './App.css';
 import image from './cv_img.jpg';
 import { Image, Contacts, Experience } from './components/Resume';
 import { Counter } from './components/Counter';
+import Repos from './components/Repos';
 
 
 function App() {
+    
   return (
     <div className="App">
       <header>
@@ -47,6 +49,8 @@ function App() {
                       </p>
                   </div>
               </div>
+              <Repos/>
+
               </section>
       </main>
     </div>
